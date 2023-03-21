@@ -22,7 +22,15 @@ appRouter.post("/api/employees/add-new", async (req, res, next) => {
         next(error);
     }
 });
-
+appRouter.get("/api/employees/update/:id", async (req, res, next) => {
+    try {
+        const id = req.params.id;
+        const employee = await employeesControllers.getAnEmployee(id);
+        res.json(employee);
+    } catch (err) {
+        throw err;
+    }
+});
 appRouter.put("/api/employees/update/:id", async (req, res, next) => {
     try {
         const employeeId = new ObjectId(req.params.id);
@@ -39,8 +47,6 @@ appRouter.put("/api/employees/update/:id", async (req, res, next) => {
 
 appRouter.post("/api/employees/training:id", async (req, res, next) => {
     try {
-
-        
     } catch (err) {
         next(err, "Updated Failed");
     }
