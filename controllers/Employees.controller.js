@@ -36,6 +36,6 @@ exports.updateEmployee = async (filter, updateDoc) => {
 exports.traingingEmployee = async (id, course) => {
     const employee = await Employee.findById(id);
     employee.training.push(course);
-    await employee.save();
+    await employee.updateOne(id, employee);
     return employee;
 };
