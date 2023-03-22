@@ -5,7 +5,6 @@ const counterSchema = new mongoose.Schema({
     count: { type: Number, default: 1 },
 });
 
-
 const employeeSchema = new mongoose.Schema({
     IDEmployee: String,
     accountNumber: String,
@@ -27,6 +26,7 @@ const employeeSchema = new mongoose.Schema({
     tax: String,
     university: String,
     ward: String,
+    training: [],
 });
 
 //Tạo dữ liệu ID nhân viên tự tăng

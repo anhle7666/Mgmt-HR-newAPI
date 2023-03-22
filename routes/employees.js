@@ -45,8 +45,16 @@ appRouter.put("/api/employees/update/:id", async (req, res, next) => {
     }
 });
 
-appRouter.post("/api/employees/training:id", async (req, res, next) => {
+appRouter.post("/api/employees/training/:id", async (req, res, next) => {
     try {
+        const id = new ObjectId(req.params.id);
+        // Tạo đối tượng training
+        const training = req.body;
+        // Loại bỏ các thuộc tính không cần thiết
+        delete training.IDEmployee;
+        delete training.fullName;
+        const result = await employeesControllers.traingingEmployee(id, training);
+        res.json(result);
     } catch (err) {
         next(err, "Updated Failed");
     }
