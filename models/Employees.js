@@ -38,7 +38,7 @@ employeeSchema.pre("save", async function (next) {
         { new: true, upsert: true },
     );
 
-    doc.IDEmployee = `PT_${counter.count.toString().padStart(5, "0")}`;
+    doc.IDEmployee = `PT${counter.count.toString().padStart(5, "0")}`;
     next();
 });
 

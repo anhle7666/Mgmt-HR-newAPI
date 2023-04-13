@@ -19,6 +19,7 @@ exports.addNewEmployee = async (EmployeeData) => {
         throw err;
     }
 };
+
 exports.getAnEmployee = async (id) => {
     try {
         const employee = await Employee.findById(id); // find employee by id
@@ -36,7 +37,6 @@ exports.updateEmployee = async (filter, updateDoc) => {
 exports.traingingEmployee = async (id, course) => {
     const employee = await Employee.findById(id);
     employee.training.push(course);
-    // await employee.updateOne(id, employee);
-    await employee.updateOne({ _id: id }, employee);
+    await Employee.updateOne({ _id: id }, employee);
     return employee;
 };
