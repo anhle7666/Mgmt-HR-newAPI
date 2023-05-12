@@ -37,10 +37,20 @@ appRouter.post("/api/login", async (req, res, next) => {
         throw err;
     }
 });
-appRouter.post("/api/register", async (req, res, next) => {
+
+appRouter.get("/api/saveIP", async (req, res, next) => {
     try {
-        const { username, password } = req.body;
-        const result = await accountsControllers.Register(username, password);
+        const result = await accountsControllers.getIP();
+        return res.json(result);
+    } catch (err) {
+        throw err;
+    }
+});
+
+appRouter.post("/api/saveIP", async (req, res, next) => {
+    try {
+        const { ip } = req.body;
+        const result = await accountsControllers.saveIP(ip);
         return res.json(result);
     } catch (err) {
         throw err;
@@ -103,6 +113,14 @@ appRouter.post("/api/shift", async (req, res, next) => {
     }
 });
 
+appRouter.get("/api/all-schedule", async (req, res, next) => {
+    try {
+        const result = await scheduleControllers.getAllSchedule();
+        res.json(result);
+    } catch (err) {
+        throw err;
+    }
+});
 appRouter.get("/api/schedule", async (req, res, next) => {
     try {
         const result = await scheduleControllers.getSchedule();

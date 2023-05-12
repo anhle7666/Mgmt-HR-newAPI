@@ -11,7 +11,6 @@ exports.getShifts = async () => {
 
 exports.addNewShift = async (shift) => {
     try {
-        console.log(shift);
         const newShift = new Shifts(shift);
         const result = await newShift.save();
         return result;

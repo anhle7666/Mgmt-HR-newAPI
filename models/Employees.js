@@ -26,6 +26,7 @@ const employeeSchema = new mongoose.Schema({
     tax: String,
     university: String,
     ward: String,
+    salary: Number,
     training: [],
 });
 

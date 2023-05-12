@@ -1,5 +1,14 @@
 const Schedule = require("../models/Schedule");
 
+exports.getAllSchedule = async () => {
+    try {
+        const result = await Schedule.find();
+        return result;
+    } catch (err) {
+        throw err;
+    }
+};
+
 exports.getSchedule = async () => {
     try {
         const result = await Schedule.find();

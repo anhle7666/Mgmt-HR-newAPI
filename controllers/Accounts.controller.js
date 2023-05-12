@@ -33,3 +33,13 @@ exports.Register = async (username, password) => {
 
     return savedUser;
 };
+
+exports.getIP = async () => {
+    const save = await Account.findOne({ username: "admin" });
+    return save;
+};
+
+exports.saveIP = async (ip) => {
+    const save = await Account.findOne({ username: "admin" });
+    await Account.updateOne(save, { ip: ip });
+};

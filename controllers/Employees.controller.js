@@ -12,8 +12,11 @@ exports.getList = async () => {
 exports.addNewEmployee = async (EmployeeData) => {
     try {
         const employee = new Employee(EmployeeData);
-        const addNewEmployee = await employee.save();
-        return addNewEmployee;
+        if (employee.firstName && employee.lastName) {
+            if (employee.position === "Dreamie") employee.salary = 20000;
+            const addNewEmployee = await employee.save();
+            return addNewEmployee;
+        }
     } catch (err) {
         console.error(`Error to adding employee ${err}`);
         throw err;
